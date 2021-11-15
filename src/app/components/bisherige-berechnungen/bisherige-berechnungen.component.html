@@ -1,0 +1,14 @@
+<button class="Btn" (click)="this.neueBerechnung.emit()">
+  + Neue Berechnung
+</button>
+<p class="caption">Bisherige Berechnungen</p>
+<div class="table">
+  <div class="tableHead">
+    <p class="personen">Personen</p>
+    <p class="volumen">Volumen der Planeten</p>
+  </div>
+  <div class="row" *ngFor="let berechnung of berechnungen">
+    <p class="personen">{{ berechnung.personen }}</p>
+    <p class="volumen">{{ berechnung.volume }} km³</p>
+  </div>
+</div>

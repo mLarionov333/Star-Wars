@@ -1,0 +1,43 @@
+<div class="caption">Suche in Personen-Datenbank</div>
+<div class="searchBox">
+  <input
+    #input
+    type="text"
+    class="search"
+    (input)="updateSearch(input.value)"
+  />
+  <div class="resultsWrap">
+    <p class="item" *ngFor="let person of persons" (click)="addPerson(person)">
+      {{ person }}
+    </p>
+    <p class="placeholder" *ngIf="!persons.length && input.value.length > 1">
+      Keine Übereinstimmungen gefunden
+    </p>
+  </div>
+</div>
+<div class="persons">
+  <div class="personsWrap">
+    <p class="item" *ngFor="let person of selectedPersons">
+      {{ person }}
+    </p>
+  </div>
+</div>
+<button
+  class="calc Btn"
+  id="calcBtn"
+  (click)="updateVolume(selectedPersons)"
+  [disabled]="!selectedPersons.length"
+>
+  Volumen berechnen
+</button>
+<div class="calculation">
+  <p>Das Volumen der Planeten beträgt:</p>
+  <p class="value">{{ volume }} km³</p>
+</div>
+<button
+  [disabled]="!selectedPersons.length || calculating || !volumeCount"
+  class="confirm Btn"
+  (click)="berechnungConfirm()"
+>
+  Berechnung übernehmen
+</button>
